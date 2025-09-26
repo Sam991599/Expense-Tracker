@@ -7,7 +7,12 @@ WORKDIR /app
 # Copy the Maven project files (pom.xml and src) to the container
 # This is done in two steps to leverage Docker cache for dependencies
 COPY pom.xml .
+COPY mvnw .           # <-- NEW LINE: Copy the Maven wrapper executable
+COPY mvnw.cmd .       # <-- NEW LINE: Copy the Windows Maven wrapper script
 COPY src ./src
+
+# Make the Maven wrapper script executable (important for Linux-based Docker)
+RUN chmod +x ./mvnw   # <-- NEW LINE: Make mvnw executable
 
 # Build the application using Maven
 # The -DskipTests flag skips tests during the build, which is often done for faster deployments
