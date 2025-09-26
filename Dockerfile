@@ -25,4 +25,4 @@ EXPOSE 8080
 
 # Command to run the application
 # This assumes your JAR is built into target/*.jar
-ENTRYPOINT ["java", "-jar", "target/*.jar"]
+ENTRYPOINT ["java", "-jar", "target/demo-0.0.1-SNAPSHOT.jar"]
